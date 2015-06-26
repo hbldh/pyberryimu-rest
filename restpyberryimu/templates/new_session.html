@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block page_content %}
+    <!-- Start Hero Section
+    ================================================== -->
+	<section id="hero" class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5"></div>
+				<div class="col-md-7">
+					<div class="lp-element animate" data-animate="fadeInDown">
+						<h1>New Recording</h1>
+						<p class="lead">Configure and start a new IMU recording.</p>
+						<p> <a href="#record" class="btn btn-danger btn-lg" role="button">Configure</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <!-- ==================================================
+End Hero -->
+
+    <!-- Start Record
+	================================================== -->
+	<section id="record" class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 sol-sm-12">
+					<div class="overview animate" data-animate="flipInY">
+						<h1>Settings</h1>
+						<p class="lead">Enter desired parameters for this recording.</p>
+					</div>
+				</div>
+				<div class="col-md-12 col-sm-12">
+					<form method="POST" action={{ url_for('new_session') }}>
+                        {{ form.hidden_tag() }}
+						<div class="faq-block animate" data-animate="fadeInLeft">
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+												General settings
+											</a>
+										</h4>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse in">
+										<div class="panel-body">
+											<div class="form-group">
+												{{ form.name.label }} <br> {{ form.name(size=20) }}
+											</div>
+											<div class="form-group">
+												{{ form.data_rate.label }} <br> {{ form.data_rate(class="form-control") }}
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+												Accelerometer
+											</a>
+										</h4>
+									</div>
+									<div id="collapseTwo" class="panel-collapse collapse">
+										<div class="panel-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+												Gyroscope
+											</a>
+										</h4>
+									</div>
+									<div id="collapseThree" class="panel-collapse collapse">
+										<div class="panel-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+												Magnetometer
+											</a>
+										</h4>
+									</div>
+									<div id="collapseFour" class="panel-collapse collapse">
+										<div class="panel-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+												Pressure & Temperature
+											</a>
+										</h4>
+									</div>
+									<div id="collapseFive" class="panel-collapse collapse">
+										<div class="panel-body">
+											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+										</div>
+									</div>
+								</div>
+								<input type="submit" value="Go">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

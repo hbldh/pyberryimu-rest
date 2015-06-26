@@ -5,13 +5,65 @@
 {% endblock %}
 
 {% block page_content %}
-<div class="container" style="margin-top:20px">
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <h2>Index page</h2>
-        </div>
-    </div>
-</div>
+<!-- Start Hero Section
+	================================================== -->
+	<section id="hero" class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5"></div>
+				<div class="col-md-7">
+					<div class="lp-element animate" data-animate="fadeInDown">
+						<h1>PyBerryIMU</h1>
+						<p class="lead">Web Application for initiating IMU recordings and obtaining them afterwards.</p>
+						<p> <a class="btn btn-danger btn-lg" role="button">See Features</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ==================================================
+	End Hero -->
+
+    <!-- Start Features
+	================================================== -->
+	<section id="features" class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- Title -->
+					<div class="overview animate" data-animate="flipInX">
+						<h1><strong>PyBerryIMU</strong> web application and REST API</h1>
+						<p class="lead">Simple solution for remotely
+                            controlling the Raspberry Pi's BerryIMU through its Python library. </p>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="service-block animate" data-animate="fadeInRight">
+						<span class="glyphicon glyphicon-play"></span>
+						<h3>Start recordings</h3>
+						<p>Full configuration possibilities for initiating recodings.</p>
+						<a href={{ url_for('new_session') }} class="btn btn-primary btn-md btn-rocket btn-rocket-default">New Recording</a>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="service-block animate" data-animate="flipInY">
+						<span class="glyphicon glyphicon-hdd"></span>
+						<h3>Access recordings</h3>
+						<p>After recordings have been completed, they are stored on the Raspberry Pi until retreived.</p>
+						<a href={{ url_for('past_sessions') }} class="btn btn-primary btn-md btn-rocket btn-rocket-default">Stored Recordings</a>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="service-block animate" data-animate="fadeInLeft">
+						<span class="glyphicon glyphicon-cloud-upload"></span>
+						<h3>Upload to Cloud</h3>
+						<p>Upload your recordings to a cloud storage.</p>
+						<button type="button" class="btn btn-primary btn-md btn-rocket btn-rocket-default">Coming soon...</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
 
 {% block javascripts %}
