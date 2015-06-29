@@ -19,29 +19,45 @@ from __future__ import print_function
 from __future__ import unicode_literals
 from __future__ import absolute_import
 
+import uuid
 import datetime
 import numpy as np
 
 from flask import render_template, jsonify, request, redirect, make_response
-from flask_wtf import Form
-from wtforms import StringField, SelectField
-from wtforms.validators import DataRequired
-from restpyberryimu import app
+
+from restpyberryimu import app, forms
+
+
 
 @app.route('/', methods=['GET', ])
 def index():
     return render_template('index.html',
                            title='Home')
 
-class MyForm(Form):
-    name = StringField('Recording Name', validators=[DataRequired()])
-    data_rate = SelectField('Data Rate', choices=((50, '50'), (100, '100'), (150, '150'), (200, '200')), default=200)
-
 @app.route('/new_session', methods=['GET', 'POST'])
 def new_session():
+    new_session_form = forms.NewSessionForm()
+    if request.method == 'POST':
+        if new_session_form.validate_on_submit():
+            return redirect('/new_session_started', code=307)
+        else:
+            return redirect('/new_session_failed')
     return render_template('new_session.html',
                            title='New Session Page',
-                           form=MyForm())
+                           form=new_session_form)
+
+
+@app.route('/new_session_started', methods=['POST'])
+def new_session_started():
+    this_uuid = uuid.uuid4()
+    request.form['uuid'] = this_uuid
+    return jsonify(**request.form)
+
+
+@app.route('/new_session_failed', methods=['GET'])
+def new_session_failed():
+    return jsonify(**request.form)
+
 
 @app.route('/past_sessions', methods=['GET'])
 def past_sessions():

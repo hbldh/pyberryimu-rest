@@ -22,7 +22,7 @@
 		</div>
 	</section>
     <!-- ==================================================
-End Hero -->
+    End Hero -->
 
     <!-- Start Record
 	================================================== -->
@@ -51,11 +51,15 @@ End Hero -->
 									<div id="collapseOne" class="panel-collapse collapse in">
 										<div class="panel-body">
 											<div class="form-group">
-												{{ form.name.label }} <br> {{ form.name(size=20) }}
+												{{ form.name.label }} <br> {{ form.name(size=20, class="form-control", placeholder="Enter a name...") }}
 											</div>
 											<div class="form-group">
 												{{ form.data_rate.label }} <br> {{ form.data_rate(class="form-control") }}
 											</div>
+                                            <div class="form-group">
+                                                {{ form.duration.label }}
+                                                <br> {{ form.duration(class="form-control", placeholder="Enter number of seconds to record...") }}
+                                            </div>
 										</div>
 									</div>
 								</div>
@@ -69,7 +73,54 @@ End Hero -->
 									</div>
 									<div id="collapseTwo" class="panel-collapse collapse">
 										<div class="panel-body">
-											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                                            <div class="form-group">
+                                                {{ form.acc_data_rate.label }}
+                                                <br>
+                                                {{ form.acc_data_rate(class="form-control") }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.acc_continuous_update.label }}
+                                                <br>
+                                                {{ form.acc_continuous_update(class="form-control") }}
+                                            </div>
+                                            <dif class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.acc_enabled_x.label }}
+                                                        <br>
+                                                        {{ form.acc_enabled_x(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.acc_enabled_y.label }}
+                                                        <br>
+                                                        {{ form.acc_enabled_y(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.acc_enabled_z.label }}
+                                                        <br>
+                                                        {{ form.acc_enabled_z(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                            </dif>
+                                            <div class="form-group">
+                                                {{ form.acc_antialias.label }}
+                                                <br>
+                                                {{ form.acc_antialias(class="form-control") }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.acc_fullscale.label }}
+                                                <br>
+                                                {{ form.acc_fullscale(class="form-control") }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.acc_selftest.label }}
+                                                <br>
+                                                {{ form.acc_selftest(class="form-control") }}
+                                            </div>
 										</div>
 									</div>
 								</div>
@@ -83,7 +134,72 @@ End Hero -->
 									</div>
 									<div id="collapseThree" class="panel-collapse collapse">
 										<div class="panel-body">
-											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                            <div class="form-group">
+                                                {{ form.gyro_data_rate.label }}
+                                                <br>
+                                                {{ form.gyro_data_rate(class="form-control") }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.gyro_bandwidth_level.label }}
+                                                <br>
+                                                {{ form.gyro_bandwidth_level(class="form-control") }}
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.gyro_continuous_update.label }}
+                                                        <br>
+                                                        {{ form.gyro_continuous_update(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.gyro_little_endian.label }}
+                                                        <br>
+                                                        {{ form.gyro_little_endian(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.gyro_powerdown_mode.label }}
+                                                        <br>
+                                                        {{ form.gyro_powerdown_mode(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.gyro_enabled_x.label }}
+                                                        <br>
+                                                        {{ form.gyro_enabled_x(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.gyro_enabled_y.label }}
+                                                        <br>
+                                                        {{ form.gyro_enabled_y(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        {{ form.gyro_enabled_z.label }}
+                                                        <br>
+                                                        {{ form.gyro_enabled_z(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.gyro_fullscale.label }}
+                                                <br>
+                                                {{ form.gyro_fullscale(class="form-control") }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.gyro_selftest.label }}
+                                                <br>
+                                                {{ form.gyro_selftest(class="form-control") }}
+                                            </div>
 										</div>
 									</div>
 								</div>
@@ -96,9 +212,23 @@ End Hero -->
 										</h4>
 									</div>
 									<div id="collapseFour" class="panel-collapse collapse">
-										<div class="panel-body">
-											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
-										</div>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                {{ form.mag_data_rate.label }}
+                                                <br>
+                                                {{ form.mag_data_rate(class="form-control") }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.mag_fullscale.label }}
+                                                <br>
+                                                {{ form.mag_fullscale(class="form-control") }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.mag_sensor_mode.label }}
+                                                <br>
+                                                {{ form.mag_sensor_mode(class="form-control") }}
+                                            </div>
+                                        </div>
 									</div>
 								</div>
 								<div class="panel panel-default">
@@ -111,11 +241,15 @@ End Hero -->
 									</div>
 									<div id="collapseFive" class="panel-collapse collapse">
 										<div class="panel-body">
-											Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+											There are no settings for this sensor as of yet.
 										</div>
 									</div>
 								</div>
-								<input type="submit" value="Go">
+                                <div class="row" style="padding-top: 10px">
+                                    <div class="col-sm-offset-3 col-sm-6">
+                                        <input class="btn btn-danger btn-lg" style="width:100%" type="submit" value="Record">
+                                    </div>
+                                </div>
 							</div>
 						</div>
 					</form>
