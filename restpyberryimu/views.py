@@ -50,8 +50,9 @@ def new_session():
 @app.route('/new_session_started', methods=['POST'])
 def new_session_started():
     this_uuid = uuid.uuid4()
-    request.form['uuid'] = this_uuid
-    return jsonify(**request.form)
+    settings = dict(request.form)
+    settings['uuid'] = this_uuid
+    return jsonify(**settings)
 
 
 @app.route('/new_session_failed', methods=['GET'])
