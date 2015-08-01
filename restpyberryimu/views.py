@@ -63,8 +63,8 @@ def new_session_started():
             from pyberryimu.recorder import BerryIMURecorder
             with BerryIMUClient(settings=settings_dict) as c:
                 c.calibration_object = StandardCalibration.load()
-                r = BerryIMURecorder(c, settings_dict.get('data_rate'),
-                                     settings_dict.get('duration'))
+                r = BerryIMURecorder(c, settings_dict.get('data_rate').pop(0),
+                                     settings_dict.get('duration').pop(0))
                 out = r.record()
             out.save(savefile_path)
         except Exception as e:
