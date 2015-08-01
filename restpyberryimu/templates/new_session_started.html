@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block page_content %}
+    <!-- Start Hero Section
+    ================================================== -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Title -->
+                    <div class="overview animate" data-animate="flipInX">
+                        <h1>Recoding session <br>"{{ settings.name.pop(0) }}"<br> started!</h1>
+
+                        <p class="lead">ID: {{ settings.uuid }}</p>
+                        <p>
+                            It will record data over {{ settings.duration.pop(0) }} seconds.
+                            When finished it can be found in the
+                            <a href={{ url_for('past_sessions') }}>"Past Sessions" archive</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==================================================
+    End Hero -->
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

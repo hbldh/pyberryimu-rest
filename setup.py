@@ -26,12 +26,13 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'pyberryimu>=0.3.2',
+        'pyberryimu>=0.3.3',
         'Flask>=0.10.1',
         'Flask-WTF>=0.10.1',
+        'futures>=3.0.3',
     ],
     dependency_links=[
-        'git+https://github.com/hbldh/pyberryimu.git@v.0.3.2#egg=pyberryimu-0.3.2',
+        'git+https://github.com/hbldh/pyberryimu.git@v.0.3.3#egg=pyberryimu-0.3.3',
     ],
     ext_modules=[],
 )
