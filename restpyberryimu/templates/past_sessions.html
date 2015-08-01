@@ -45,7 +45,7 @@
                             {% for s in files %}
                                 <tr>
                                     <td>
-                                        <a href={{ url_for('item_page', oid=s['uuid']) }}><i class="fa fa-download"></i> {{ s['uuid'] }}</a>
+                                        <a href={{ url_for('item_page', this_uuid=s['uuid']) }}><i class="fa fa-download"></i> {{ s['uuid'] }}</a>
                                     </td>
                                     <td>{{ s.get('date') }}</td>
                                     <td>{{ s.get('name') }}</td>

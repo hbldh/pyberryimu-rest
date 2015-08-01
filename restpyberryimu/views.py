@@ -102,9 +102,9 @@ def past_sessions():
                            files=stored_files)
 
 
-@app.route('/tem_page/<uuid_>', methods=['GET'])
-def item_page(uuid_):
-    return send_file(os.path.join(config.SAVE_FOLDER, uuid_ + ".json"),
+@app.route('/tem_page/<this_uuid>', methods=['GET'])
+def item_page(this_uuid):
+    return send_file(os.path.join(config.SAVE_FOLDER, this_uuid + ".json"),
                      mimetype='application/json')
 
 
