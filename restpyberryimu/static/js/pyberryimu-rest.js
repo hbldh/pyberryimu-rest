@@ -50,8 +50,8 @@
         /*	Pretty Photo
 	================================================== */
 
-        jQuery('#gallery a').attr('rel', 'prettyPhoto');
-        jQuery("a[rel^='prettyPhoto']").prettyPhoto();
+        //jQuery('#gallery a').attr('rel', 'prettyPhoto');
+        //jQuery("a[rel^='prettyPhoto']").prettyPhoto();
 
         /*	Bootstrap Carousel
 	================================================== */
