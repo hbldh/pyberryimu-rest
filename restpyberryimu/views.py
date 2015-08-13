@@ -50,11 +50,11 @@ def new_session():
 
 @app.route('/new_session_started', methods=['POST'])
 def new_session_started():
+    new_session_form = forms.NewSessionForm()
     this_uuid = uuid.uuid4()
     filepath_to_save_to = os.path.join(config.SAVE_FOLDER, str(this_uuid) + '.json')
-    settings = dict(request.form)
+    settings = _parse_settings(new_session_form)
     settings['uuid'] = this_uuid
-    _parse_settings(settings)
 
     def function_to_call(savefile_path, settings_dict):
         try:
@@ -63,8 +63,8 @@ def new_session_started():
             from pyberryimu.recorder import BerryIMURecorder
             with BerryIMUClient(settings=settings_dict) as c:
                 c.calibration_object = StandardCalibration.load()
-                r = BerryIMURecorder(c, settings_dict.get('data_rate').pop(0),
-                                     settings_dict.get('duration').pop(0))
+                r = BerryIMURecorder(c, settings_dict.get('data_rate'),
+                                     settings_dict.get('duration'))
                 out = r.record()
             out.save(savefile_path)
         except Exception as e:
@@ -102,41 +102,44 @@ def past_sessions():
                            files=stored_files)
 
 
-@app.route('/tem_page/<this_uuid>', methods=['GET'])
+@app.route('/item_page/<this_uuid>', methods=['GET'])
 def item_page(this_uuid):
     return send_file(os.path.join(config.SAVE_FOLDER, this_uuid + ".json"),
                      mimetype='application/json')
 
 
-def _parse_settings(setup_dict):
+def _parse_settings(nfs):
     return {
+        'name': nfs.name.data,
+        'data_rate': int(nfs.data_rate.data),
+        'duration': int(nfs.duration.data),
         'accelerometer': {
-            'data_rate': setup_dict.get('acc_data_rate'),
-            'continuous_update': setup_dict.get('acc_continuous_update'),
-            'enabled_x': setup_dict.get('acc_enabled_x'),
-            'enabled_y': setup_dict.get('acc_enabled_y'),
-            'enabled_z': setup_dict.get('acc_enabled_z'),
-            'anti-alias': setup_dict.get('acc_antialias'),
-            'full_scale': setup_dict.get('acc_fullscale'),
-            'self_test': setup_dict.get('acc_selftest')
+            'data_rate': float(nfs.acc_data_rate.data),
+            'continuous_update': nfs.acc_continuous_update.data,
+            'enabled_x': nfs.acc_enabled_x.data,
+            'enabled_y': nfs.acc_enabled_y.data,
+            'enabled_z': nfs.acc_enabled_z.data,
+            'anti-alias': int(nfs.acc_antialias.data),
+            'full_scale': int(nfs.acc_fullscale.data),
+            'self_test': int(nfs.acc_selftest.data) if nfs.acc_selftest.data != 'X' else 'X'
         },
         'gyroscope': {
-            'data_rate': setup_dict.get('gyro_data_rate'),
-            'bandwidth_level': setup_dict.get('gyro_bandwidth_level'),
-            'powerdown_mode': setup_dict.get('gyro_powerdown_mode'),
-            'enabled_z': setup_dict.get('gyro_enabled_z'),
-            'enabled_y': setup_dict.get('gyro_enabled_y'),
-            'enabled_x': setup_dict.get('gyro_enabled_x'),
-            'continuous_update': setup_dict.get('gyro_continuous_update'),
-            'little_endian': setup_dict.get('gyro_little_endian'),
-            'full_scale': setup_dict.get('gyro_fullscale'),
-            'self_test': setup_dict.get('gyro_selftest')
+            'data_rate': int(nfs.gyro_data_rate.data),
+            'bandwidth_level': int(nfs.gyro_bandwidth_level.data),
+            'powerdown_mode': nfs.gyro_powerdown_mode.data,
+            'enabled_z': nfs.gyro_enabled_z.data,
+            'enabled_y': nfs.gyro_enabled_y.data,
+            'enabled_x': nfs.gyro_enabled_x.data,
+            'continuous_update': nfs.gyro_continuous_update.data,
+            'little_endian': nfs.gyro_little_endian.data,
+            'full_scale': int(nfs.gyro_fullscale.data),
+            'self_test': int(nfs.gyro_selftest.data)
         },
         'magnetometer': {
             'enabled_temp': True,
-            'data_rate': setup_dict.get('mag_data_rate'),
-            'full_scale': setup_dict.get('mag_fullscale'),
-            'sensor_mode': setup_dict.get('mag_sensor_mode'),
+            'data_rate': float(nfs.mag_data_rate.data),
+            'full_scale': int(nfs.mag_fullscale.data),
+            'sensor_mode': int(nfs.mag_sensor_mode.data),
             'lowpower_mode': False,
             'high_resolution': True
         }
